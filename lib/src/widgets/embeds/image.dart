@@ -48,7 +48,7 @@ Image imageByUrl(String imageUrl,
   }
   String lastUrl = imageUrl;
   if (imageUrlProcess != null) {
-    lastUrl = imageUrlProcess!(imageUrl);
+    lastUrl = imageUrlProcess(imageUrl);
   }
   return Image.file(io.File(lastUrl),
       width: width, height: height, alignment: alignment);
