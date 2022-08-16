@@ -169,6 +169,7 @@ class QuillEditor extends StatefulWidget {
       this.onSingleLongTapMoveUpdate,
       this.onSingleLongTapEnd,
       this.embedBuilder = defaultEmbedBuilder,
+        this.imageUrlProcess,
       this.customElementsEmbedBuilder,
       this.linkActionPickerDelegate = defaultLinkActionPickerDelegate,
       this.customStyleBuilder,
@@ -345,7 +346,7 @@ class QuillEditor extends StatefulWidget {
   final bool Function(
           LongPressEndDetails details, TextPosition Function(Offset offset))?
       onSingleLongTapEnd;
-
+  final String Function(String imageUrl)? imageUrlProcess;
   final EmbedBuilder embedBuilder;
   final CustomEmbedBuilder? customElementsEmbedBuilder;
   final CustomStyleBuilder? customStyleBuilder;
@@ -490,6 +491,7 @@ class QuillEditorState extends State<QuillEditor>
           node,
           readOnly,
           onVideoInit,
+          widget.imageUrlProcess,
         );
       },
       linkActionPickerDelegate: widget.linkActionPickerDelegate,

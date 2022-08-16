@@ -25,6 +25,7 @@ Widget defaultEmbedBuilder(
   leaf.Embed node,
   bool readOnly,
   void Function(GlobalKey videoContainerKey)? onVideoInit,
+    String Function(String imageUrl)? imageUrlProcess,
 ) {
   assert(!kIsWeb, 'Please provide EmbedBuilder for Web');
 
@@ -55,12 +56,12 @@ Widget defaultEmbedBuilder(
           final a = getAlignment(_attrs[Attribute.mobileAlignment]);
           image = Padding(
               padding: EdgeInsets.all(m),
-              child: imageByUrl(imageUrl, width: w, height: h, alignment: a));
+              child: imageByUrl(imageUrl, width: w, height: h, alignment: a, imageUrlProcess: imageUrlProcess));
         }
       }
 
       if (_widthHeight == null) {
-        image = imageByUrl(imageUrl);
+        image = imageByUrl(imageUrl, imageUrlProcess: imageUrlProcess);
         _widthHeight = Tuple2((image as Image).width, image.height);
       }
 

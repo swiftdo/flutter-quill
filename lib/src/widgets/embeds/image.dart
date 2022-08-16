@@ -36,7 +36,7 @@ String getImageStyleString(QuillController controller) {
 Image imageByUrl(String imageUrl,
     {double? width,
     double? height,
-    AlignmentGeometry alignment = Alignment.center}) {
+    AlignmentGeometry alignment = Alignment.center, String Function(String url)? imageUrlProcess}) {
   if (isImageBase64(imageUrl)) {
     return Image.memory(base64.decode(imageUrl),
         width: width, height: height, alignment: alignment);
@@ -46,7 +46,11 @@ Image imageByUrl(String imageUrl,
     return Image.network(imageUrl,
         width: width, height: height, alignment: alignment);
   }
-  return Image.file(io.File(imageUrl),
+  String lastUrl = imageUrl;
+  if (imageUrlProcess != null) {
+    lastUrl = imageUrlProcess!(imageUrl);
+  }
+  return Image.file(io.File(lastUrl),
       width: width, height: height, alignment: alignment);
 }
 

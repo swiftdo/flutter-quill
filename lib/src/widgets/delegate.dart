@@ -12,6 +12,7 @@ typedef EmbedBuilder = Widget Function(
   Embed node,
   bool readOnly,
   void Function(GlobalKey videoContainerKey)? onVideoInit,
+    String Function(String imageUrl)? imageUrlProcess,
 );
 
 typedef CustomEmbedBuilder = Widget Function(
