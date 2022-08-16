@@ -473,6 +473,7 @@ class QuillEditorState extends State<QuillEditor>
         node,
         readOnly,
         onVideoInit,
+        imageUrlProcess,
       ) {
         final customElementsEmbedBuilder = widget.customElementsEmbedBuilder;
         final isCustomType = node.value.type == BlockEmbed.customType;
